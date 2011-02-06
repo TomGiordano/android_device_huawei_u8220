@@ -18,6 +18,7 @@ LOCAL_SHARED_LIBRARIES := \
     libmedia
 
 LOCAL_STATIC_LIBRARIES := libaudiopolicybase
+LOCAL_MODULE_TAGS := optional
 
 LOCAL_MODULE:= libaudiopolicy
 
@@ -29,6 +30,7 @@ include $(BUILD_SHARED_LIBRARY)
 
 
 include $(CLEAR_VARS)
+LOCAL_MODULE_TAGS := optional
 
 LOCAL_MODULE := libaudio
 

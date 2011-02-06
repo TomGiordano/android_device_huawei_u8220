@@ -19,19 +19,5 @@ ALL_PREBUILT += $(file)
 $(file) : $(LOCAL_PATH)/init.qcom.rc | $(ACP)
 	$(transform-prebuilt-to-target)
 
-include $(CLEAR_VARS)
-LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE := vold.fstab
-LOCAL_SRC_FILES := $(LOCAL_MODULE)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := ramzswap.ko
-LOCAL_MODULE_TAGS := user
-LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules/2.6.29-perf/
-LOCAL_SRC_FILES := $(LOCAL_MODULE)
-include $(BUILD_PREBUILT)
-
 -include vendor/huawei/u8220/AndroidBoardVendor.mk
 
