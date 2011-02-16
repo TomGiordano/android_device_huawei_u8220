@@ -33,16 +33,12 @@ on boot
 #create  WIFI filesystem structure
     mkdir /data/misc 01771 system misc
     mkdir /data/misc/wifi 0770 system wifi
-    mkdir /data/misc/wifi/wpa_supplicant
-    chown wifi wifi /data/misc/wifi/wpa_supplicant
-    chmod 770 /data/misc/wifi/wpa_supplicant
     mkdir /data/misc/wifi/sockets
     chown system wifi /data/misc/wifi/sockets
     chmod 770 /data/misc/wifi/sockets
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
     mkdir /data/system 0775 system system
-    symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
 
 
 # Permission for ril
@@ -125,16 +121,10 @@ service bm3OPP /system/bin/sdptool add --channel=4 OPUSH
     disabled
     oneshot
 
-#service qcom-sh /system/bin/sh /init.qcom.sh
-#    user root
-#    oneshot
-
-
-#/*BK4D06334 chentongle c00106201 20091121 Begin*/
 # logcat switch at boot
-service log_logcat /system/bin/logcat
-        disabled
-	oneshot
+#service log_logcat /system/bin/logcat
+#        disabled
+#	oneshot
 #/*BK4D06334 chentongle c00106201 20091121 End*/
 
 on property:persist.service.logcat.enable=1
@@ -142,10 +132,6 @@ on property:persist.service.logcat.enable=1
 
 on property:persist.service.logcat.enable=0
     stop log_logcat
-
-#ln -s /dev/oncrpc/30000002:00010000 /dev/oncrpc/30000002:00010001
-
-
 
 # START HUAWEI RPC SERVICE
 service oem_rpc_svc /system/bin/oem_rpc_svc
@@ -165,6 +151,8 @@ service oem_rpc_svc /system/bin/oem_rpc_svc
 	
 # WPA SETTINGS
 service wpa_supplicant /system/bin/wpa_supplicant -Dawext -ieth0 -W -c/data/misc/wifi/wpa_supplicant.conf
+    group wifi inet
+    socket wpa_eth0 dgram 660 wifi wifi
     disabled
     oneshot
 
