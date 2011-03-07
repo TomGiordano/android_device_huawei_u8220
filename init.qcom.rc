@@ -56,6 +56,9 @@ on boot
    chmod 0777 /data/local/tmp
    chown radio shell /data/local/tmp
 
+# input
+    chmod 0777 /dev/input/event0
+    chmod 0666 /dev/input/event1
 
 # SD card polling
     chown system system /sys/bus/platform/devices/msm_sdcc.1/polling
@@ -70,17 +73,14 @@ on boot
     chmod 0666 /dev/akm8973_dev
     chmod 0666 /dev/accel
 
-# ???
-    chmod 0777 /dev/input/event0
-    chmod 0666 /dev/input/event1
-
 # logs
-    chmod 0777 /sys/kernel/logger/log_main/enable
-    chmod 0777 /sys/kernel/logger/log_events/enable
-    chmod 0777 /sys/kernel/logger/log_radio/enable
-    chmod 0777 /sys/kernel/logger/log_main/priority
-    chmod 0777 /sys/kernel/logger/log_events/priority
-    chmod 0777 /sys/kernel/logger/log_radio/priority
+    write /sys/kernel/logger/log_main/enable 1
+    write /sys/kernel/logger/log_main/priority 2
+    write /sys/kernel/logger/log_events/enable 1
+    write /sys/kernel/logger/log_events/priority 2
+    write /sys/kernel/logger/log_radio/enable 1
+    write /sys/kernel/logger/log_radio/priority 2
+
 
 on property:init.svc.hcid=running
     write /sys/devices/virtual/bluetooth/hci0/idle_timeout 7000
@@ -121,32 +121,9 @@ service bm3OPP /system/bin/sdptool add --channel=4 OPUSH
     disabled
     oneshot
 
-# logcat switch at boot
-#service log_logcat /system/bin/logcat
-#        disabled
-#	oneshot
-#/*BK4D06334 chentongle c00106201 20091121 End*/
-
-on property:persist.service.logcat.enable=1
-    start log_logcat
-
-on property:persist.service.logcat.enable=0
-    stop log_logcat
-
 # START HUAWEI RPC SERVICE
 service oem_rpc_svc /system/bin/oem_rpc_svc
     oneshot
-	
-	
-	
-#????	
-#service hcid /system/bin/hcid -s -n -f /etc/bluez/hcid.conf
-#    socket bluetooth stream 660 bluetooth bluetooth
-#    socket dbus_bluetooth stream 660 bluetooth bluetooth
-    # init.rc does not yet support applying capabilities, so run as root and
-    # let hcid drop uid to bluetooth with the right linux capabilities
-#    group bluetooth net_bt_admin misc
-#    disabled
 	
 	
 # WPA SETTINGS
@@ -160,24 +137,14 @@ service dhcpcd /system/bin/dhcpcd eth0 -B
     disabled 
     oneshot
 
-service wlan_tool /system/bin/wlan_tool 
-	disabled
-	oneshot
+#service wlan_tool /system/bin/wlan_tool 
+#	disabled
+#	oneshot
 
-service abtfilt /system/bin/abtfilt -c -d -z -n
-    disabled
-    oneshot
-
-#START HUAWEI COMPASS SERVICE
-#service akmd /system/bin/akmd2 
-#    disabled
+#service abtfilt /system/bin/abtfilt -c -d -z -n
+#   disabled
 #    oneshot
-# compass/accelerometer daemon
+
 service akmd /system/bin/akmd2
     user compass
     group compass misc input
-
-
-#start sync service
-service syncsdr /system/bin/syncsdr
-	oneshot

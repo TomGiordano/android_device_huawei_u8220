@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
@@ -22,18 +22,29 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 DEVICE_PACKAGE_OVERLAYS := device/huawei/u8220/overlay
 
 PRODUCT_PACKAGES += \
-    VoiceDialer \
     libOmxCore \
     gralloc.msm7k \
-    VoiceDialer 
+    copybit.u8220 \
+    gps.u8220 
 
 # vold config
 PRODUCT_COPY_FILES += \
-    device/huawei/u8220/vold.fstab:/system/etc/vold.fstab
+    device/huawei/u8220/vold.fstab:system/etc/vold.fstab
+
+# Modules
+PRODUCT_COPY_FILES += \
+    device/huawei/u8220/prebuilt/zram.ko:system/lib/modules/2.6.29-perf/zram.ko
 
 # DHCP config for wifi
 PRODUCT_COPY_FILES += \
-    device/huawei/u8220/dhcpcd.conf:/system/etc/dhcpcd/dhcpcd.conf
+    device/huawei/u8220/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf
+
+PRODUCT_COPY_FILES += \
+    device/huawei/u8220/ueventd.qcom.rc:root/ueventd.qcom.rc
+
+# Use prebuilt vold for now.
+#PRODUCT_COPY_FILES += \
+#    device/huawei/u8220/vold:system/bin/vold
 
 # Install the features available on this device.
 PRODUCT_COPY_FILES += \
@@ -42,7 +53,7 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml
+    frameworks/base/data/etc/android.hardware.touchscreen.xml:system/etc/permissions/android.hardware.touchscreen.xml
 
 PRODUCT_PROPERTY_OVERRIDES := \
     keyguard.no_require_sim=true \
@@ -57,8 +68,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=eth0 \
     ro.com.android.dataroaming=false \
     ring.delay=0 \
-    ro.telephony.Call_ring.delay=0
+    ro.telephony.call_ring.delay=0 \
+    ro.telephony.call_ring.multiple=false
 
+# disable Compcache by default. We really need compcache, but zram is causing stability problems.
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.compcache.default=0 
 
 # Time between scans in seconds. Keep it high to minimize battery drain.
 # This only affects the case in which there are remembered access points,
@@ -91,11 +106,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # media configuration xml file
 PRODUCT_COPY_FILES += \
-    device/huawei/u8220/media_profiles.xml:/system/etc/media_profiles.xml
+    device/huawei/u8220/media_profiles.xml:system/etc/media_profiles.xml
 
 # wpa_supplicant configuration file
 PRODUCT_COPY_FILES += \
-    device/huawei/u8220/wpa_supplicant.conf:/system/etc/wifi/wpa_supplicant.conf
+    device/huawei/u8220/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := device/huawei/u8220/kernel
