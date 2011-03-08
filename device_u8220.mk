@@ -94,7 +94,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Disable JIT by default
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.execution-mode=int:fast
+    dalvik.vm.execution-mode=int:jit \
+    persist.sys.use_dithering=0
 
 # The OpenGL ES API level that is natively supported by this device.
 # This is a 16.16 fixed point number
