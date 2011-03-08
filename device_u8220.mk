@@ -25,6 +25,7 @@ PRODUCT_PACKAGES += \
     libOmxCore \
     gralloc.msm7k \
     copybit.u8220 \
+    lights.u8220 \
     gps.u8220 
 
 # vold config
