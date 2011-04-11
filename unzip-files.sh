@@ -39,14 +39,6 @@ unzip -j -o ../../../${DEVICE}_update.zip system/lib/libpbmlib.so -d ../../../ve
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libril-qcril-hook-oem.so -d ../../../vendor/huawei/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libdss.so -d ../../../vendor/huawei/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libqmi.so -d ../../../vendor/huawei/$DEVICE/proprietary
-unzip -j -o ../../../${DEVICE}_update.zip system/wifi/ar6000.ko -d ../../../vendor/huawei/$DEVICE/proprietary
-unzip -j -o ../../../${DEVICE}_update.zip system/wifi/caldata.bin.ar6002 -d ../../../vendor/huawei/$DEVICE/proprietary
-unzip -j -o ../../../${DEVICE}_update.zip system/wifi/data.patch.hw2_0.bin.ar6002  -d ../../../vendor/huawei/$DEVICE/proprietary
-unzip -j -o ../../../${DEVICE}_update.zip system/wifi/device.bin -d ../../../vendor/huawei/$DEVICE/proprietary
-unzip -j -o ../../../${DEVICE}_update.zip system/wifi/data.patch.hw2_0.bin.ar6102 -d ../../../vendor/huawei/$DEVICE/proprietary
-unzip -j -o ../../../${DEVICE}_update.zip system/wifi/athtcmd_ram.bin -d ../../../vendor/huawei/$DEVICE/proprietary
-unzip -j -o ../../../${DEVICE}_update.zip system/wifi/caldata.bin.ar6102 -d ../../../vendor/huawei/$DEVICE/proprietary
-unzip -j -o ../../../${DEVICE}_update.zip system/wifi/athwlan.bin.z77 -d ../../../vendor/huawei/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libcamera.so -d ../../../vendor/huawei/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/bin/oem_rpc_svc -d ../../../vendor/huawei/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/liboem_rapi.so -d ../../../vendor/huawei/$DEVICE/proprietary
@@ -108,14 +100,6 @@ PRODUCT_COPY_FILES += \\
     vendor/huawei/__DEVICE__/proprietary/libril-qcril-hook-oem.so:/system/lib/libril-qcril-hook-oem.so \\
     vendor/huawei/__DEVICE__/proprietary/libdss.so:/system/lib/libdss.so \\
     vendor/huawei/__DEVICE__/proprietary/libqmi.so:/system/lib/libqmi.so \\
-    vendor/huawei/__DEVICE__/proprietary/ar6000.ko:system/wifi/ar6000.ko \\
-    vendor/huawei/__DEVICE__/proprietary/caldata.bin.ar6002:system/wifi/caldata.bin.ar6002 \\
-    vendor/huawei/__DEVICE__/proprietary/data.patch.hw2_0.bin.ar6002:system/wifi/data.patch.hw2_0.bin.ar6002 \\
-    vendor/huawei/__DEVICE__/proprietary/device.bin:system/wifi/device.bin \\
-    vendor/huawei/__DEVICE__/proprietary/data.patch.hw2_0.bin.ar6102:system/wifi/data.patch.hw2_0.bin.ar6102 \\
-    vendor/huawei/__DEVICE__/proprietary/athtcmd_ram.bin:system/wifi/athtcmd_ram.bin \\
-    vendor/huawei/__DEVICE__/proprietary/caldata.bin.ar6102:system/wifi/caldata.bin.ar6102 \\
-    vendor/huawei/__DEVICE__/proprietary/athwlan.bin.z77:system/wifi/athwlan.bin.z77 \\
     vendor/huawei/__DEVICE__/proprietary/libcamera.so:obj/lib/libcamera.so \\
     vendor/huawei/__DEVICE__/proprietary/libcamera.so:system/lib/libcamera.so \\
     vendor/huawei/__DEVICE__/proprietary/oem_rpc_svc:system/bin/oem_rpc_svc \\

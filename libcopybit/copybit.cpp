@@ -41,7 +41,7 @@
 /******************************************************************************/
 
 #if defined(COPYBIT_MSM7K)
-#define MAX_SCALE_FACTOR    (4)
+#define MAX_SCALE_FACTOR    (3)
 #define MAX_DIMENSION       (4096)
 #elif defined(COPYBIT_QSD8K)
 #define MAX_SCALE_FACTOR    (8)
@@ -199,7 +199,7 @@ static void set_rects(struct copybit_context_t *dev,
 static void set_infos(struct copybit_context_t *dev, struct mdp_blit_req *req) {
     req->alpha = dev->mAlpha;
     req->transp_mask = MDP_TRANSP_NOP;
-    req->flags = dev->mFlags | MDP_BLEND_FG_PREMULT;
+    req->flags = dev->mFlags; //| MDP_BLEND_FG_PREMULT;
 }
 
 /** copy the bits */

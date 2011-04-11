@@ -41,14 +41,6 @@ adb pull /system/lib/libpbmlib.so ../../../vendor/huawei/$DEVICE/proprietary/lib
 adb pull /system/lib/libril-qcril-hook-oem.so ../../../vendor/huawei/$DEVICE/proprietary/libril-qcril-hook-oem.so
 adb pull /system/lib/libdss.so ../../../vendor/huawei/$DEVICE/proprietary/libdss.so
 adb pull /system/lib/libqmi.so ../../../vendor/huawei/$DEVICE/proprietary/libqmi.so
-adb pull /system/wifi/ar6000.ko ../../../vendor/huawei/$DEVICE/proprietary/ar6000.ko
-adb pull /system/wifi/caldata.bin.ar6002 ../../../vendor/huawei/$DEVICE/proprietary/caldata.bin.ar6002
-adb pull /system/wifi/data.patch.hw2_0.bin.ar6002  ../../../vendor/huawei/$DEVICE/proprietary/data.patch.hw2_0.bin.ar6002
-adb pull /system/wifi/device.bin ../../../vendor/huawei/$DEVICE/proprietary/device.bin
-adb pull /system/wifi/data.patch.hw2_0.bin.ar6102 ../../../vendor/huawei/$DEVICE/proprietary/data.patch.hw2_0.bin.ar6102
-adb pull /system/wifi/athtcmd_ram.bin ../../../vendor/huawei/$DEVICE/proprietary/athtcmd_ram.bin
-adb pull /system/wifi/caldata.bin.ar6102 ../../../vendor/huawei/$DEVICE/proprietary/caldata.bin.ar6102
-adb pull /system/wifi/athwlan.bin.z77 ../../../vendor/huawei/$DEVICE/proprietary/athwlan.bin.z77
 adb pull /system/lib/libcamera.so ../../../vendor/huawei/$DEVICE/proprietary/libcamera.so
 adb pull /system/bin/oem_rpc_svc ../../../vendor/huawei/$DEVICE/proprietary/oem_rpc_svc
 adb pull /system/lib/liboem_rapi.so ../../../vendor/huawei/$DEVICE/proprietary/liboem_rapi.so
@@ -110,14 +102,6 @@ PRODUCT_COPY_FILES += \\
     vendor/huawei/__DEVICE__/proprietary/libril-qcril-hook-oem.so:/system/lib/libril-qcril-hook-oem.so \\
     vendor/huawei/__DEVICE__/proprietary/libdss.so:/system/lib/libdss.so \\
     vendor/huawei/__DEVICE__/proprietary/libqmi.so:/system/lib/libqmi.so \\
-    vendor/huawei/__DEVICE__/proprietary/ar6000.ko:system/wifi/ar6000.ko \\
-    vendor/huawei/__DEVICE__/proprietary/caldata.bin.ar6002:system/wifi/caldata.bin.ar6002 \\
-    vendor/huawei/__DEVICE__/proprietary/data.patch.hw2_0.bin.ar6002:system/wifi/data.patch.hw2_0.bin.ar6002 \\
-    vendor/huawei/__DEVICE__/proprietary/device.bin:system/wifi/device.bin \\
-    vendor/huawei/__DEVICE__/proprietary/data.patch.hw2_0.bin.ar6102:system/wifi/data.patch.hw2_0.bin.ar6102 \\
-    vendor/huawei/__DEVICE__/proprietary/athtcmd_ram.bin:system/wifi/athtcmd_ram.bin \\
-    vendor/huawei/__DEVICE__/proprietary/caldata.bin.ar6102:system/wifi/caldata.bin.ar6102 \\
-    vendor/huawei/__DEVICE__/proprietary/athwlan.bin.z77:system/wifi/athwlan.bin.z77 \\
     vendor/huawei/__DEVICE__/proprietary/libcamera.so:obj/lib/libcamera.so \\
     vendor/huawei/__DEVICE__/proprietary/libcamera.so:system/lib/libcamera.so \\
     vendor/huawei/__DEVICE__/proprietary/oem_rpc_svc:system/bin/oem_rpc_svc \\

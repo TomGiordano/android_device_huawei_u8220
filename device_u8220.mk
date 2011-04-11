@@ -13,11 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/small_base.mk)
 
 # The gps config appropriate for this device
-$(call inherit-product, device/common/gps/gps_us_supl.mk)
+$(call inherit-product, device/common/gps/gps_eu.mk)
 
 DEVICE_PACKAGE_OVERLAYS := device/huawei/u8220/overlay
 
@@ -26,6 +25,10 @@ PRODUCT_PACKAGES += \
     gralloc.msm7k \
     copybit.u8220 \
     lights.u8220 \
+    libRS \
+    librs_jni \
+    hwprops \
+    rzscontrol \
     gps.u8220 
 
 # vold config
@@ -34,18 +37,24 @@ PRODUCT_COPY_FILES += \
 
 # Modules
 PRODUCT_COPY_FILES += \
-    device/huawei/u8220/prebuilt/zram.ko:system/lib/modules/2.6.29-perf/zram.ko
+    device/huawei/u8220/prebuilt/ramzswap.ko:system/lib/modules/2.6.29-perf/kernel/drivers/staging/ramzswap/ramzswap.ko
 
 # DHCP config for wifi
 PRODUCT_COPY_FILES += \
-    device/huawei/u8220/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf
+    device/huawei/u8220/prebuilt/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
+    device/huawei/u8220/prebuilt/ar6000.ko:system/wifi/ar6000.ko \
+    device/huawei/u8220/prebuilt/athtcmd_ram.bin:system/wifi/athtcmd_ram.bin \
+    device/huawei/u8220/prebuilt/athwlan.bin.z77:system/wifi/athwlan.bin.z77 \
+    device/huawei/u8220/prebuilt/caldata.bin.ar6002:system/wifi/caldata.bin.ar6002 \
+    device/huawei/u8220/prebuilt/data.patch.hw2_0.bin.ar6002:system/wifi/data.patch.hw2_0.bin.ar6002 \
+    device/huawei/u8220/prebuilt/device.bin:system/wifi/device.bin
 
 PRODUCT_COPY_FILES += \
     device/huawei/u8220/ueventd.qcom.rc:root/ueventd.qcom.rc
 
 # Use prebuilt vold for now.
 #PRODUCT_COPY_FILES += \
-#    device/huawei/u8220/vold:system/bin/vold
+    device/huawei/u8220/prebuilt/vold:system/bin/vold
 
 # Install the features available on this device.
 PRODUCT_COPY_FILES += \
@@ -54,6 +63,7 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.xml:system/etc/permissions/android.hardware.touchscreen.xml
 
 PRODUCT_PROPERTY_OVERRIDES := \
@@ -72,9 +82,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.call_ring.delay=0 \
     ro.telephony.call_ring.multiple=false
 
-# disable Compcache by default. We really need compcache, but zram is causing stability problems.
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.compcache.default=0 
+    ro.compcache.default=18
 
 # Time between scans in seconds. Keep it high to minimize battery drain.
 # This only affects the case in which there are remembered access points,

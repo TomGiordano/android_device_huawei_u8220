@@ -1228,6 +1228,9 @@ status_t AudioHardware::doRouting(AudioStreamInMSM72xx *input)
         }
     }
 
+    if (sndDevice == SND_DEVICE_HANDSET && (outputDevices & AudioSystem::DEVICE_OUT_EARPIECE))
+        setMode(AudioSystem::MODE_IN_CALL); //earpiece only works when MODE_IN_CALL is set.
+
     if (sndDevice != -1 && sndDevice != mCurSndDevice) {
         ret = doAudioRouteOrMute(sndDevice);
         msm72xx_enable_audpp(audProcess,sndDevice);
