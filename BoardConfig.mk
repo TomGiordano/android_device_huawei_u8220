@@ -53,6 +53,11 @@ NO_FALLBACK_FONT:=true
 
 TARGET_PROVIDES_LIBAUDIO := true
 
+# This one may look a little strange in a Huawei config.
+# The u8220 returns a 5 strings response to QUERY_AVAILABLE_NETWORKS and the framework expects a 4 string response. 
+# Apparently new HTC RIL does the same thing so this setting also fixes the u8220 issue.
+BOARD_USE_NEW_LIBRIL_HTC := true
+
 BOARD_USES_QCOM_LIBS := true
 BOARD_USES_QCOM_LIBRPC := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := u8220
