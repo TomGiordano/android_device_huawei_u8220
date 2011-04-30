@@ -44,6 +44,8 @@ BOARD_KERNEL_CMDLINE := mem=128M androidboot.hardware=qcom no_console_suspend=1 
 
 BOARD_HAVE_BLUETOOTH := true
 
+BOARD_USE_USB_MASS_STORAGE_SWITCH := true
+
 # OpenGL drivers config file path
 BOARD_EGL_CFG := device/huawei/u8220/egl.cfg
 

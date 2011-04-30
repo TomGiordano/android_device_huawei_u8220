@@ -53,10 +53,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/huawei/u8220/ueventd.qcom.rc:root/ueventd.qcom.rc
 
-# Use prebuilt vold for now.
-#PRODUCT_COPY_FILES += \
-    device/huawei/u8220/prebuilt/vold:system/bin/vold
-
 # Install the features available on this device.
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
