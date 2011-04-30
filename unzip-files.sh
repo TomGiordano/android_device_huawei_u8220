@@ -39,12 +39,10 @@ unzip -j -o ../../../${DEVICE}_update.zip system/lib/libpbmlib.so -d ../../../ve
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libril-qcril-hook-oem.so -d ../../../vendor/huawei/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libdss.so -d ../../../vendor/huawei/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libqmi.so -d ../../../vendor/huawei/$DEVICE/proprietary
-unzip -j -o ../../../${DEVICE}_update.zip system/lib/libcamera.so -d ../../../vendor/huawei/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/bin/oem_rpc_svc -d ../../../vendor/huawei/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/liboem_rapi.so -d ../../../vendor/huawei/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libhwrpc.so -d ../../../vendor/huawei/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/bin/qmuxd -d ../../../vendor/huawei/$DEVICE/proprietary
-unzip -j -o ../../../${DEVICE}_update.zip system/lib/hw/sensors.default.so -d ../../../vendor/huawei/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libmmcamera.so -d ../../../vendor/huawei/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libmmjpeg.so -d ../../../vendor/huawei/$DEVICE/proprietary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libmm-qcamera-tgt.so -d ../../../vendor/huawei/$DEVICE/proprietary
@@ -100,13 +98,10 @@ PRODUCT_COPY_FILES += \\
     vendor/huawei/__DEVICE__/proprietary/libril-qcril-hook-oem.so:/system/lib/libril-qcril-hook-oem.so \\
     vendor/huawei/__DEVICE__/proprietary/libdss.so:/system/lib/libdss.so \\
     vendor/huawei/__DEVICE__/proprietary/libqmi.so:/system/lib/libqmi.so \\
-    vendor/huawei/__DEVICE__/proprietary/libcamera.so:obj/lib/libcamera.so \\
-    vendor/huawei/__DEVICE__/proprietary/libcamera.so:system/lib/libcamera.so \\
     vendor/huawei/__DEVICE__/proprietary/oem_rpc_svc:system/bin/oem_rpc_svc \\
     vendor/huawei/__DEVICE__/proprietary/liboem_rapi.so:system/lib/liboem_rapi.so \\
     vendor/huawei/__DEVICE__/proprietary/libhwrpc.so:system/lib/libhwrpc.so \\
     vendor/huawei/__DEVICE__/proprietary/qmuxd:system/bin/qmuxd \\
-    vendor/huawei/__DEVICE__/proprietary/sensors.default.so:/system/lib/hw/sensors.default.so \\
     vendor/huawei/__DEVICE__/proprietary/libmmcamera.so:system/lib/libmmcamera.so \\
     vendor/huawei/__DEVICE__/proprietary/libmmjpeg.so:system/lib/libmmjpeg.so \\
     vendor/huawei/__DEVICE__/proprietary/libmm-qcamera-tgt.so:system/lib/libmm-qcamera-tgt.so \\

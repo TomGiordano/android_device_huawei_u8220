@@ -41,12 +41,10 @@ adb pull /system/lib/libpbmlib.so ../../../vendor/huawei/$DEVICE/proprietary/lib
 adb pull /system/lib/libril-qcril-hook-oem.so ../../../vendor/huawei/$DEVICE/proprietary/libril-qcril-hook-oem.so
 adb pull /system/lib/libdss.so ../../../vendor/huawei/$DEVICE/proprietary/libdss.so
 adb pull /system/lib/libqmi.so ../../../vendor/huawei/$DEVICE/proprietary/libqmi.so
-adb pull /system/lib/libcamera.so ../../../vendor/huawei/$DEVICE/proprietary/libcamera.so
 adb pull /system/bin/oem_rpc_svc ../../../vendor/huawei/$DEVICE/proprietary/oem_rpc_svc
 adb pull /system/lib/liboem_rapi.so ../../../vendor/huawei/$DEVICE/proprietary/liboem_rapi.so
 adb pull /system/lib/libhwrpc.so ../../../vendor/huawei/$DEVICE/proprietary/libhwrpc.so
 adb pull /system/bin/qmuxd ../../../vendor/huawei/$DEVICE/proprietary/qmuxd
-adb pull /system/lib/hw/sensors.default.so ../../../vendor/huawei/$DEVICE/proprietary/sensors.default.so
 adb pull /system/lib/libmmcamera.so ../../../vendor/huawei/$DEVICE/proprietary/libmmcamera.so
 adb pull /system/lib/libmmjpeg.so ../../../vendor/huawei/$DEVICE/proprietary/libmmjpeg.so
 adb pull /system/lib/libmm-qcamera-tgt.so ../../../vendor/huawei/$DEVICE/proprietary/libmm-qcamera-tgt.so
@@ -102,13 +100,10 @@ PRODUCT_COPY_FILES += \\
     vendor/huawei/__DEVICE__/proprietary/libril-qcril-hook-oem.so:/system/lib/libril-qcril-hook-oem.so \\
     vendor/huawei/__DEVICE__/proprietary/libdss.so:/system/lib/libdss.so \\
     vendor/huawei/__DEVICE__/proprietary/libqmi.so:/system/lib/libqmi.so \\
-    vendor/huawei/__DEVICE__/proprietary/libcamera.so:obj/lib/libcamera.so \\
-    vendor/huawei/__DEVICE__/proprietary/libcamera.so:system/lib/libcamera.so \\
     vendor/huawei/__DEVICE__/proprietary/oem_rpc_svc:system/bin/oem_rpc_svc \\
     vendor/huawei/__DEVICE__/proprietary/liboem_rapi.so:system/lib/liboem_rapi.so \\
     vendor/huawei/__DEVICE__/proprietary/libhwrpc.so:system/lib/libhwrpc.so \\
     vendor/huawei/__DEVICE__/proprietary/qmuxd:system/bin/qmuxd \\
-    vendor/huawei/__DEVICE__/proprietary/sensors.default.so:/system/lib/hw/sensors.default.so \\
     vendor/huawei/__DEVICE__/proprietary/libmmcamera.so:system/lib/libmmcamera.so \\
     vendor/huawei/__DEVICE__/proprietary/libmmjpeg.so:system/lib/libmmjpeg.so \\
     vendor/huawei/__DEVICE__/proprietary/libmm-qcamera-tgt.so:system/lib/libmm-qcamera-tgt.so \\
