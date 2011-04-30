@@ -22,7 +22,6 @@
 #include <dirent.h>
 #include <sys/select.h>
 
-//#include "akm8973.h"
 #include <linux/akm8973.h>
 
 #include <cutils/log.h>

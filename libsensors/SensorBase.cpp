@@ -118,6 +118,5 @@ int SensorBase::openInput(const char* inputName) {
     }
     closedir(dir);
     LOGE_IF(fd<0, "couldn't find '%s' input device", inputName);
-    LOGE("input opened. inputName=%s fd=%d", inputName, fd);
     return fd;
 }
