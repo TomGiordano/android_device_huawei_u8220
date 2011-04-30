@@ -13,4 +13,4 @@
 # limitations under the License.
 
 
-include $(call all-named-subdir-makefiles, liblights libaudio libcopybit)
+include $(call all-named-subdir-makefiles, liblights libaudio libcopybit libsensors)

@@ -47,14 +47,12 @@ BOARD_HAVE_BLUETOOTH := true
 # OpenGL drivers config file path
 BOARD_EGL_CFG := device/huawei/u8220/egl.cfg
 
-TARGET_USES_OLD_LIBSENSORS_HAL := true
-
 NO_FALLBACK_FONT:=true
 
 TARGET_PROVIDES_LIBAUDIO := true
 
 # This one may look a little strange in a Huawei config.
-# The u8220 returns a 5 strings response to QUERY_AVAILABLE_NETWORKS and the framework expects a 4 string response. 
+# The u8220 returns a 5 string response to QUERY_AVAILABLE_NETWORKS and the framework expects a 4 string response. 
 # Apparently new HTC RIL does the same thing so this setting also fixes the u8220 issue.
 BOARD_USE_NEW_LIBRIL_HTC := true
 

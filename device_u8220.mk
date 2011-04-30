@@ -25,6 +25,7 @@ PRODUCT_PACKAGES += \
     gralloc.msm7k \
     copybit.u8220 \
     lights.u8220 \
+    sensors.u8220 \
     libRS \
     librs_jni \
     hwprops \
