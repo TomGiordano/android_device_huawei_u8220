@@ -1108,7 +1108,7 @@ status_t AudioHardware::doAudioRouteOrMute(uint32_t device)
 #endif
     LOGV("doAudioRouteOrMute() device %x, mMode %d, mMicMute %d", device, mMode, mMicMute);
     return do_route_audio_rpc(device,
-                              mMode != AudioSystem::MODE_IN_CALL, mMicMute, m7xsnddriverfd);
+                              mMode != AudioSystem::MODE_IN_CALL && device != SND_DEVICE_HANDSET, mMicMute, m7xsnddriverfd);
 }
 
 status_t AudioHardware::doRouting(AudioStreamInMSM72xx *input)
@@ -1227,9 +1227,6 @@ status_t AudioHardware::doRouting(AudioStreamInMSM72xx *input)
             sndDevice = SND_DEVICE_IN_S_SADC_OUT_SPEAKER_PHONE;
         }
     }
-
-    if (sndDevice == SND_DEVICE_HANDSET && (outputDevices & AudioSystem::DEVICE_OUT_EARPIECE))
-        setMode(AudioSystem::MODE_IN_CALL); //earpiece only works when MODE_IN_CALL is set.
 
     if (sndDevice != -1 && sndDevice != mCurSndDevice) {
         ret = doAudioRouteOrMute(sndDevice);
